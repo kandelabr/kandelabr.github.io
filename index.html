@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Parent Page</title>
+  <!-- Load the CSS file first -->
+  <link rel="stylesheet" href="https://www.lufthansa.com/digitalhangar/design-system/releases/v1.10.2/standalone/css/lufthansa.css">
+  <!-- Then load the JavaScript file -->
+  <script src="https://www.lufthansa.com/digitalhangar/design-system/releases/v1.10.2/standalone/packages/maui-design-system.js"></script>
 </head>
 <body>
-<script src="https://kandelabr.github.io/webchat.js"></script>
-<script src="https://kandelabr.github.io/date-picker.webchat-plugin.js"></script>
-<script>
-	initWebchat(
-		"https://endpoint-trial.cognigy.ai/2db2ace8d0510a012e7c7a597e34020ab0f3148b6c7fa4673618eb3d0d374b23"
-	);
-</script>
+  <h1>This is the parent page</h1>
+  
+  <div class="badge-container">
+    <maui-button type="secondary" size="medium" width="auto">
+        Button
+    </maui-button>
+    <iframe src="https://raw.githubusercontent.com/kandelabr/kandelabr.github.io/main/child.html" />
+  </div>
 </body>
 </html>
