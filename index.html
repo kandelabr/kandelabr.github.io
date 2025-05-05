@@ -6,7 +6,41 @@
   <link rel="stylesheet" href="https://www.lufthansa.com/digitalhangar/design-system/releases/latest/standalone/css/lufthansa.css">
 </head>
 <body>
-  <maui-button type="secondary" size="medium" width="auto">
-    Button
-</maui-button></body>
+  <div className="maui-theme-lufthansa">
+    <maui-autocomplete
+      id="1"
+      buttontriggerlabel="Test"
+      assistive-clear="Clear"
+      assistive-geolocation="Access your current location"
+      searchvalueminlength="2"
+      mode="suggestions"
+    >
+      <maui-padding-container padding="2" slot="{`firstResultListHint`}">
+        <maui-copy id="{`firstResultListHint`}">No results</maui-copy>
+      </maui-padding-container>
+    </maui-autocomplete>
+
+    <maui-autocomplete
+      id="2"
+      buttontriggerlabel="Test2"
+      assistive-clear="Clear"
+      assistive-geolocation="Access your current location"
+      searchvalueminlength="2"
+      mode="suggestions"
+    >
+      <maui-padding-container padding="2" slot="{`secondResultListHint`}">
+        <maui-copy id="{`secondResultListHint`}">No results</maui-copy>
+      </maui-padding-container>
+    </maui-autocomplete>
+
+    <div>
+      <maui-button emphasized="true" id="{`submitBtn`}" type="secondary" size="small" width="auto">
+        "{buttonMessage}"
+      </maui-button>
+
+      <maui-button emphasized="true" id="{`cancelButton`}" type="secondary" size="small" width="auto">
+        "{cancelButtonMes"sage}
+      </maui-button>
+    </div>
+  </div></body>
 </html>
