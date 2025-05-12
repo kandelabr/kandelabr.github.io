@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple Speech to Text</title>
+</head>
+<body>
+  <h1>Say something!</h1>
+  <button id="startButton">Start Recognition</button>
+  <p id="result"></p>
+
+  <script>
+    const startButton = document.getElementById('startButton');
+    const resultParagraph = document.getElementById('result');
+    let recognition;
+
+    if ('webkitSpeechRecognition' in window) {
+      recognition = new webkitSpeechRecognition();
+    } else if ('speechRecognition' in window) {
+      recognition = new speechRecognition();
+    } else {
+      resultParagraph.textContent = 'Speech recognition is not supported in this browser.';
+    }
+
+    if (recognition) {
+      recognition.continuous = true; // Keep listening even after a pause
+      recognition.interimResults = true; // Get partial results
+
+      recognition.onstart = () => {
+        resultParagraph.textContent = 'Listening...';
+      };
+
+      recognition.onresult = (event) => {
+        let finalTranscript = '';
+        let interimTranscript = '';
+
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          if (event.results[i].isFinal) {
+            finalTranscript += event.results[i][0].transcript;
+          } else {
+            interimTranscript += event.results[i][0].transcript;
+          }
+        }
+        resultParagraph.textContent = finalTranscript || interimTranscript;
+      };
+
+      recognition.onerror = (event) => {
+        resultParagraph.textContent = 'Error occurred in recognition: ' + event.error;
+      };
+
+      startButton.addEventListener('click', () => {
+        recognition.start();
+      });
+    }
+  </script>
+</body>
+</html>
